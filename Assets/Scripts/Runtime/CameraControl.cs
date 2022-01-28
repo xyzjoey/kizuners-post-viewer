@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum ZoomLevel
 {
-    Default = -18,
+    Default = -43,
     Focus = -5
 }
 

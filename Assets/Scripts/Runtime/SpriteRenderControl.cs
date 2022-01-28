@@ -7,11 +7,6 @@ public class SpriteRenderControl : MonoBehaviour
 {
     public string imageUrl = "";
 
-    void Start()
-    {
-        this.LoadImage();
-    }
-
     public void LoadImage()
     {
         if (this.imageUrl == "")
@@ -25,14 +20,11 @@ public class SpriteRenderControl : MonoBehaviour
 
     IEnumerator LoadImageCoroutine()
     {
-        if (Debug.isDebugBuild)
-        {
-            Debug.Log(this.name + ": Loading image from " + this.imageUrl);
-        }
-        else
-        {
-            Debug.Log(this.name + ": Loading image");
-        }
+#if DEBUG
+        Debug.Log(this.name + ": Loading image from " + this.imageUrl);
+#else
+        Debug.Log(this.name + ": Loading image");
+#endif
 
         UnityWebRequest www = UnityWebRequestTexture.GetTexture(this.imageUrl);
         yield return www.SendWebRequest();
@@ -45,7 +37,10 @@ public class SpriteRenderControl : MonoBehaviour
         {
             Texture2D texture = DownloadHandlerTexture.GetContent(www);
             Rect rect = new Rect(0, 0, texture.width, texture.height);
+            
             this.GetComponent<SpriteRenderer>().sprite = Sprite.Create(texture, rect, new Vector2(0.5f, 0.5f));
+            
+            Debug.Log(this.name + ": Image loaded");
         }
     }
 }
