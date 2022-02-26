@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class SceneControl : MonoBehaviour
 {
-    CameraControl cameraControl;
-    // ItemMenu itemMenu;
-    MouseInfo mouseInfo = new MouseInfo();
+    private CameraControl cameraControl;
+    private ItemMenu itemMenu;
 
-    void Start()
+    private MouseInfo mouseInfo = new MouseInfo();
+    private Item focusedItem = null;
+
+    void Awake()
     {
-        this.cameraControl = GameObject.FindWithTag("CameraControl").GetComponent<CameraControl>();
-        // this.itemMenu = GameObject.FindWithTag("ItemMenu").GetComponent<ItemMenu>();
+        this.cameraControl = CommonObjects.Get().cameraControl;
+        this.itemMenu = CommonObjects.Get().itemMenu;
     }
 
     void Update()
@@ -22,28 +24,120 @@ public class SceneControl : MonoBehaviour
 
         if (this.mouseInfo.isShortClick)
         {
-            // if (this.MouseOnMenu()) ...
-
-            if (this.mouseInfo.MouseOnItem())
+            if (this.mouseInfo.target == null)
             {
-                this.FocusItem(this.mouseInfo.target);
+                this.UnfocusItem();
+            }
+            else if (this.mouseInfo.target.layer == (int)Layer.UI)
+            {
+                if (this.mouseInfo.target.tag == Tag.ItemButton)
+                {
+                    this.OnItemClick(this.mouseInfo.target.GetComponent<ItemButton>().GetTargetItem());
+                }
+            }
+            else if (this.mouseInfo.target.tag == Tag.Item)
+            {
+                this.OnItemClick(this.mouseInfo.target.GetComponent<Item>());
             }
             else
             {
                 this.UnfocusItem();
             }
         }
+
+        if (this.IsTargetChanged())
+        {
+            if (this.mouseInfo.state == MouseState.Down)
+            {
+                this.SetInteractTargetState(this.mouseInfo.target, InteractState.MouseDown);
+            }
+            else
+            {
+                this.SetInteractTargetState(this.mouseInfo.target, InteractState.MouseOver);
+            }
+
+            this.SetInteractTargetState(this.mouseInfo.prevTarget, InteractState.None);
+        }
+        else if (this.mouseInfo.IsStateChanged())
+        {
+            if (this.mouseInfo.state == MouseState.Down)
+            {
+                this.SetInteractTargetState(this.mouseInfo.target, InteractState.MouseDown);
+            }
+            else
+            {
+                this.SetInteractTargetState(this.mouseInfo.target, InteractState.MouseOver);
+            }
+        }
     }
 
-    void FocusItem(GameObject gameObject)
+    private bool IsTargetChanged()
     {
-        this.cameraControl.Focus(gameObject);
-        // this.itemMenu.Open();
+        if (this.mouseInfo.prevTarget == this.mouseInfo.target)
+        {
+            return false;
+        }
+
+        if (this.mouseInfo.prevTarget == null || this.mouseInfo.target == null)
+        {
+            return true;
+        }
+
+        if (this.mouseInfo.prevTarget.layer == (int)Layer.UI && this.mouseInfo.target.layer == (int)Layer.UI)
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+    private void SetInteractTargetState(GameObject target, InteractState state)
+    {
+        if (target == null)
+        {
+            return;
+        }
+
+        if (target.layer == (int)Layer.UI)
+        {
+            this.itemMenu.SetInteractState(state);
+        }
+        else if (target.tag == Tag.Item)
+        {
+            target.GetComponent<Item>().SetInteractState(state);
+        }
+    }
+
+    public void OnItemClick(Item item)
+    {
+        this.FocusItem(item);
+        this.itemMenu.ScrollTo(item);
+        this.itemMenu.EnterState(ItemMenuState.ScrollingBySceneControl);
+    }
+
+    public void FocusItem(Item item)
+    {
+        if (this.focusedItem != null)
+        {
+            this.focusedItem.SetFocus(false);
+        }
+
+        this.cameraControl.Focus(item.gameObject);
+        item.SetFocus(true);
+
+        this.focusedItem = item;
     }
 
     public void UnfocusItem()
     {
-        // this.itemMenu.Close();
+        this.itemMenu.EnterState(ItemMenuState.Closed);
+
         this.cameraControl.Unfocus();
+
+        if (this.focusedItem != null)
+        {
+            this.focusedItem.SetFocus(false);
+            this.focusedItem = null;
+        }
     }
 }

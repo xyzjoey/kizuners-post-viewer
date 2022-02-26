@@ -3,6 +3,12 @@
 # Get latest from https://github.com/github/gitignore/blob/main/Unity.gitignore
 #
 
+export/
+resources/
+Build/
+DebugBuild/
+Assets/Images/Generated
+
 .vscode
 
 /[Ll]ibrary/

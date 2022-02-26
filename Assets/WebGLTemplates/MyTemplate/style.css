@@ -1,0 +1,33 @@
+body {
+    position: fixed;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+
+    background-color: #FF679A; 
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+#unity-container {
+    background-color: #ffffff; 
+    width: 100%; 
+    height: 100% 
+}
+
+#unity-canvas { 
+    position: fixed;
+    background-color: #FF679A; 
+    width: 100%; 
+    height: 100% 
+}
+
+#mobile-container { 
+    background-color: #FF679A; 
+    color: #ffffff;
+    font-family: "Righteous", cursive;
+}

@@ -7,6 +7,9 @@ TagManager:
   - Item
   - ItemMenu
   - CameraControl
+  - ImageCamera
+  - SceneControl
+  - ItemButton
   layers:
   - Default
   - TransparentFX
@@ -14,9 +17,9 @@ TagManager:
   - 
   - Water
   - UI
+  - PostProcess
   - 
-  - 
-  - 
+  - Background
   - 
   - 
   - 
@@ -46,4 +49,10 @@ TagManager:
     locked: 0
   - name: MainSprite
     uniqueID: 4162903337
+    locked: 0
+  - name: MessageSprite
+    uniqueID: 98216969
+    locked: 0
+  - name: MiniIllustSprite
+    uniqueID: 3650354833
     locked: 0
