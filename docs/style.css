@@ -1,0 +1,30 @@
+body, canvas {
+    margin: 0;
+    padding: 0;
+
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    position: fixed;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+
+
+@media screen and(max-width: 768px) {
+    .unity-desktop {
+        display: none;
+    }
+}
+
+@media screen and(min-width: 768px) {
+    .pc_screen {
+        display: none;
+    }
+}
