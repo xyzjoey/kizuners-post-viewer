@@ -5,8 +5,7 @@
 
 export/
 resources/
-Build/
-DebugBuild/
+*Build/
 Assets/Images/Generated
 
 .vscode

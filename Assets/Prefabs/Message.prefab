@@ -743,7 +743,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 485d1a74dc4735a4caa74670100da401, type: 2}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -806,7 +806,6 @@ MonoBehaviour:
   autoSort: 1
   autoScale: 0
   autoPosXY: 0
-  correctAlphaOnLoad: 0
   expectedCameraPos: {x: 0, y: 0, z: -50}
 --- !u!114 &-2414463699314826712
 MonoBehaviour:
