@@ -5,16 +5,20 @@
   <meta charset="utf-8">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <title>KizunaAI Illust Viewer</title>
+  <title>Kizuners Post 2022</title>
   <link rel="shortcut icon" href="thumbnail.ico">
   <link rel="stylesheet" type="text/css" href="style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
   <div id="mobile-container" class="mobile-desktop" style="text-align: center">
-    <h2>mobile support coming soon</h2>
-    <img id="mobile_img" src="Draft10K.png" alt="AI-chan" title="AI-chan">
+    <h2 id="Righteous">mobile support coming soon</h2>
+    <img id="mobile_img" src="illust.png" alt="AI-chan" title="AI-chan">
   </div>
 
   <div id="unity-container" class="unity-desktop">
@@ -88,12 +92,12 @@
       var buildUrl = "Build";
       var loaderUrl = buildUrl + "/Build.loader.js";
       var config = {
-        dataUrl: buildUrl + "/Build.data.br",
-        frameworkUrl: buildUrl + "/Build.framework.js.br",
-        codeUrl: buildUrl + "/Build.wasm.br",
+        dataUrl: buildUrl + "/Build.data",
+        frameworkUrl: buildUrl + "/Build.framework.js",
+        codeUrl: buildUrl + "/Build.wasm",
         streamingAssetsUrl: "StreamingAssets",
-        companyName: "DefaultCompany",
-        productName: "KizunaAI Illust Viewer",
+        companyName: "Kizuna Project",
+        productName: "Kizuners Post 2022",
         productVersion: "0.1",
         showBanner: unityShowBanner,
       };
