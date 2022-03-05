@@ -5,7 +5,7 @@ using TMPro;
 
 public enum ItemType
 {
-    MainIllust,
+    MainIllust, // TODO remove MainIllust
     Message,
     MiniIllust
 }
@@ -35,7 +35,7 @@ public class Item : MonoBehaviour
 
     /*-- Unity event -- */
 
-    void Awake()
+    private void Awake()
     {
         this.enableFloating = (this.type != ItemType.MainIllust);
         this.floatingShift = Random.Range(0f, 5f);
@@ -47,7 +47,7 @@ public class Item : MonoBehaviour
         }
     }
 
-    void Update()
+    private void Update()
     {
         if (this.enableFloating && !this.IsState(ItemState.Focused))
         {
@@ -56,7 +56,7 @@ public class Item : MonoBehaviour
     }
 
 #if UNITY_EDITOR
-    void OnValidate()
+    private void OnValidate()
     {
         SetNameFromItemName();
     }
@@ -113,7 +113,7 @@ public class Item : MonoBehaviour
         this.SetGlow(false);
     }
 
-    void SetGlow(bool value)
+    private void SetGlow(bool value)
     {
         if (this.glowLight != null)
         {
@@ -123,7 +123,7 @@ public class Item : MonoBehaviour
 
     /*-- Editor -- */
 #if UNITY_EDITOR
-    void SetNameFromItemName()
+    private void SetNameFromItemName()
     {
         if (this.itemName != "")
         {
@@ -131,41 +131,41 @@ public class Item : MonoBehaviour
         }
     }
 
-    public string GetItemNameFromName()
-    {
-        int seperatorPos = this.name.IndexOf('_');
+    // public string GetItemNameFromName()
+    // {
+    //     int seperatorPos = this.name.IndexOf('_');
 
-        if (seperatorPos >= 0)
-        {
-            return this.name.Substring(seperatorPos + 1);
-        }
-        else
-        {
-            Debug.LogWarning(this.name + ": Failed to get item name");
+    //     if (seperatorPos >= 0)
+    //     {
+    //         return this.name.Substring(seperatorPos + 1);
+    //     }
+    //     else
+    //     {
+    //         Debug.LogWarning(this.name + ": Failed to get item name");
             
-            return this.itemName;
-        }
-    }
+    //         return this.itemName;
+    //     }
+    // }
 
-    public void SetItemNameFromName()
-    {
-        this.itemName = this.GetItemNameFromName();
-    }
+    // public void SetItemNameFromName()
+    // {
+    //     this.itemName = this.GetItemNameFromName();
+    // }
 
 
-    public void SetAllMissingItemNameFromName()
-    {
-        var objects = FindObjectsOfType<Item>();
+    // public void SetAllMissingItemNameFromName()
+    // {
+    //     var objects = FindObjectsOfType<Item>();
 
-        foreach (var o in objects)
-        {
-            var item = o.GetComponent<Item>();
+    //     foreach (var o in objects)
+    //     {
+    //         var item = o.GetComponent<Item>();
 
-            if (item.itemName == "")
-            {
-                item.SetItemNameFromName();
-            }
-        }
-    }
+    //         if (item.itemName == "")
+    //         {
+    //             item.SetItemNameFromName();
+    //         }
+    //     }
+    // }
 #endif
 }

@@ -14,12 +14,7 @@ public class ItemMenuEditor : Editor
     {
         if (GUILayout.Button("Reset Item Buttons"))
         {
-            ((ItemMenu)this.target).RecreateItemButtons();
-        }
-
-        if (GUILayout.Button("Clear Item Buttons"))
-        {
-            ((ItemMenu)this.target).ClearItemButtons();
+            ((ItemMenu)this.target).ResetItemsAndButtons();
         }
     }
 }

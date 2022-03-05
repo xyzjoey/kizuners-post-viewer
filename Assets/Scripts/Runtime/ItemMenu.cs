@@ -73,10 +73,10 @@ public class ItemMenu : MonoBehaviour
         this.scrollViewRectControl = this.scrollRect.GetComponent<RectControl>();
     }
 
-    // private void Start()
-    // {
-    //     this.ResetItemsAndButtons();
-    // }
+    private void Start()
+    {
+        this.ResetItemsAndButtons();
+    }
 
     /*-- Callback -- */
 
@@ -93,7 +93,7 @@ public class ItemMenu : MonoBehaviour
 
         this.Scroll(this.scrollInfo.contentPosition + this.ScreenToContentPosition(this.scrollRectInfo.positionDelta));
 
-        // this.LoopScrollRect(); // FIXME
+        // this.LoopScrollRect(); // TODO do not rely on scroll rect
 
         if (this.interactState != InteractState.MouseDown)
         {
@@ -205,37 +205,32 @@ public class ItemMenu : MonoBehaviour
 
     public void ResetItemsAndButtons()
     {
-        this.RetrieveItems();
+#if UNITY_EDITOR
+        CommonObjects.Get().RetrieveItems();
+#endif
+        this.items = CommonObjects.Get().items;
+        this.RecreateItemButtons();
         this.ResetScrollInfo();
         this.UpdateItemButtonsOnScroll();
     }
 
-    public void ResetScrollInfo()
+    private void ResetScrollInfo()
     {
         this.scrollInfo = new ScrollInfo();
         this.scrollInfo.contentInterval = 1f / this.items.Count;
         this.scrollInfo.screenInterval = 1f / this.visibleItemButtonNum;
     }
 
-    private void RetrieveItems()
+    private void RecreateItemButtons()
     {
-        this.items.Clear();
-
-        foreach (var itemObject in GameObject.FindGameObjectsWithTag(Tag.Item))
+        while (this.itemButtonContainer.transform.childCount != 0)
         {
-            Item item = itemObject.GetComponent<Item>();
+            GameObject.DestroyImmediate(this.itemButtonContainer.transform.GetChild(0).gameObject);
+        }
 
-            if (item.type != ItemType.MainIllust)
-            {
-#if UNITY_EDITOR
-                if (item.itemName == "")
-                {
-                    Debug.LogWarning(item.name + ": Item name is empty");
-                }
-#endif
-
-                this.items.Add(item);
-            }
+        for (int i = 0; i < this.GetItemButtonNum(); ++i)
+        {
+            Object.Instantiate(this.itemButtonPrefab, this.itemButtonContainer.transform);
         }
     }
 
@@ -442,31 +437,5 @@ public class ItemMenu : MonoBehaviour
     void SetItemButtonPosition(ItemButton itemButton, float position)
     {
         itemButton.SetRectOnScroll(position, this.xCurve, this.yCurve, this.scaleCurve);
-    }
-
-    /*-- Editor -- */
-
-    public void ClearItemButtons()
-    {
-        while (this.itemButtonContainer.transform.childCount != 0)
-        {
-            GameObject.DestroyImmediate(this.itemButtonContainer.transform.GetChild(0).gameObject);
-        }
-    }
-
-    private void CreateItemButtons()
-    {
-        for (int i = 0; i < this.GetItemButtonNum(); ++i)
-        {
-            Object.Instantiate(this.itemButtonPrefab, this.itemButtonContainer.transform);
-        }
-
-        this.ResetItemsAndButtons();
-    }
-
-    public void RecreateItemButtons()
-    {
-        this.ClearItemButtons();
-        this.CreateItemButtons();
     }
 }
