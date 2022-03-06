@@ -5,22 +5,42 @@ using UnityEngine.AddressableAssets;
 
 public class SceneLoader : MonoBehaviour
 {
-    public AssetReference itemsReference;
+    public AssetReference mainSceneReference;
 
-    private ItemMenu itemMenu;
-
-    private void Awake()
+    private IEnumerator Start()
     {
-        this.itemMenu = CommonObjects.Get().itemMenu;
+        var handle = Addressables.LoadSceneAsync(mainSceneReference);
+        yield return handle;
     }
 
-    private void Start()
-    {
-        // this.LoadItems();
-    }
+    // public AssetReference mainIllustReference;
+    // public AssetReference messagesReference;
+    // public AssetReference miniIllustReference;
 
-    private void LoadItems()
-    {
-    //     this.itemMenu.ResetItemsAndButtons();
-    }
+    // // private ItemMenu itemMenu;
+
+    // // private void Awake()
+    // // {
+    // //     this.itemMenu = CommonObjects.Get().itemMenu;
+    // // }
+
+    // private void Start()
+    // {
+    //     this.LoadAll();
+    //     // StartCoroutine(this.LoadItemsDelayed());
+    // }
+
+    // // // for debug
+    // // private IEnumerator LoadItemsDelayed()
+    // // {
+    // //     yield return new WaitForSeconds(3);
+    // //     this.LoadItems();
+    // // }
+
+    // private void LoadAll()
+    // {
+    //     Addressables.InstantiateAsync(this.mainIllustReference);
+    //     Addressables.InstantiateAsync(this.messagesReference, CommonObjects.Get().itemGroup.transform);
+    //     Addressables.InstantiateAsync(this.miniIllustReference, CommonObjects.Get().itemGroup.transform);
+    // }
 }

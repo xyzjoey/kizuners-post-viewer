@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public enum ItemMenuState
 {
+    Uninitialized,
     Closed,
     Opened,
     ScrollingByScrollRect,
@@ -146,32 +147,32 @@ public class ItemMenu : MonoBehaviour
         this.state = state;
     }
 
-    public void EnterState(ItemMenuState state)
+    public void EnterState(ItemMenuState targetState)
     {
-        if (this.state == state)
+        if (this.state == targetState)
         {
             return;
         }
 
-        if (state == ItemMenuState.ScrollingByScrollRect)
+        if (targetState == ItemMenuState.ScrollingByScrollRect)
         {
             if (this.interactState == InteractState.MouseDown)
             {
-                this.SetState(state);
+                this.SetState(targetState);
             }
         }
-        else if (state == ItemMenuState.ScrollingBySceneControl)
+        else if (targetState == ItemMenuState.ScrollingBySceneControl)
         {
             if (this.state == ItemMenuState.Closed)
             {
                 this.SetState(ItemMenuState.Opened);
             }
 
-            this.SetState(state);
+            this.SetState(targetState);
         }
         else
         {
-            this.SetState(state);
+            this.SetState(targetState);
         }
     }
 
@@ -216,6 +217,11 @@ public class ItemMenu : MonoBehaviour
 
     private void ResetScrollInfo()
     {
+        if (this.items.Count == 0)
+        {
+            return;
+        }
+
         this.scrollInfo = new ScrollInfo();
         this.scrollInfo.contentInterval = 1f / this.items.Count;
         this.scrollInfo.screenInterval = 1f / this.visibleItemButtonNum;
@@ -420,6 +426,11 @@ public class ItemMenu : MonoBehaviour
 
     void UpdateItemButtonsOnScroll()
     {
+        if (this.items.Count == 0)
+        {
+            return;
+        }
+
         int itemButtonNum = this.GetItemButtonNum();
         int middleIndex = itemButtonNum / 2;
 

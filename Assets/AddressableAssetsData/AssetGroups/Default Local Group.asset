@@ -17,8 +17,16 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 078b5d16474265f48b7a0c46b30907ff
   m_SerializeEntries:
-  - m_GUID: 67de4933bf7a56b4598f739877f60873
-    m_Address: Assets/Prefabs/Items
+  - m_GUID: 4a7ae416890b86c4c9eedc2f5faa9937
+    m_Address: Assets/Prefabs/Items/Messages.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6f489b9a9e229f3449a5121ca30b5d6a
+    m_Address: Assets/Prefabs/Items/MainIllust8K.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a962c8f5698c5e54ea4fc22431d972a9
+    m_Address: Assets/SceneObjects/MiniIllusts.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0
