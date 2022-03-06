@@ -8,19 +8,9 @@
   <title>Kizuners Post 2022</title>
   <link rel="shortcut icon" href="thumbnail.ico">
   <link rel="stylesheet" type="text/css" href="TemplateData/style.css">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
 </head>
 
 <body>
-
-  <div id="mobile-container" class="mobile-desktop" style="text-align: center">
-    <h2 id="Righteous">mobile support coming soon</h2>
-    <img id="mobile_img" src="illust.png" alt="AI-chan" title="AI-chan">
-  </div>
-
   <div id="unity-container" class="unity-desktop">
     <canvas id="unity-canvas"></canvas>
     <div id="unity-loading-bar">
@@ -33,84 +23,64 @@
 
   <!-- ユーザの端末をチェック -->
   <script type="text/javascript">
-    function isSmartPhone() {
-      if (navigator.userAgent.match(/iPhone|Android.+Mobile/)) {
-        return true;
-      } else {
-        return false;
-      }
+    var isSmartPhone = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+    var container = document.querySelector("#unity-container");
+    var canvas = document.querySelector("#unity-canvas");
+    var loadingBar = document.querySelector("#unity-loading-bar");
+    var progressBarFull = document.querySelector("#unity-progress-bar-full");
+
+    var buildUrl = "Build";
+    var loaderUrl = buildUrl + "/BrDebugBuild.loader.js";
+    var config = {
+      dataUrl: buildUrl + "/BrDebugBuild.data.br",
+      frameworkUrl: buildUrl + "/BrDebugBuild.framework.js.br",
+      codeUrl: buildUrl + "/BrDebugBuild.wasm.br",
+      streamingAssetsUrl: "StreamingAssets",
+      companyName: "Kizuna Project",
+      productName: "Kizuners Post 2022",
+      productVersion: "0.1",
+    };
+
+    // By default Unity keeps WebGL canvas render target size matched with
+    // the DOM size of the canvas element (scaled by window.devicePixelRatio)
+    // Set this to false if you want to decouple this synchronization from
+    // happening inside the engine, and you would instead like to size up
+    // the canvas DOM size and WebGL render target sizes yourself.
+    // config.matchWebGLToCanvasSize = false;
+
+    if (isSmartPhone) {
+      // Mobile device style: fill the whole browser client area with the game canvas:
+      var meta = document.createElement('meta');
+      meta.name = 'viewport';
+      meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes, viewport-fit=cover';
+      document.getElementsByTagName('head')[0].appendChild(meta);
+      container.className = "unity-mobile";
+
+      // To lower canvas resolution on mobile devices to gain some
+      // performance, uncomment the following line:
+      // config.devicePixelRatio = 1;
     }
 
-    if (isSmartPhone() == true) {
-      var container = document.getElementById("unity-container");
-      container.style.display = 'none';
-
-    } else {
-      var mobile_img = document.getElementById("mobile-container");
-      mobile_img.style.display = 'none';
-
-      var container = document.querySelector("#unity-container");
-      var canvas = document.querySelector("#unity-canvas");
-      var loadingBar = document.querySelector("#unity-loading-bar");
-      var progressBarFull = document.querySelector("#unity-progress-bar-full");
-
-      var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/BrBuild.loader.js";
-      var config = {
-        dataUrl: buildUrl + "/BrBuild.data.br",
-        frameworkUrl: buildUrl + "/BrBuild.framework.js.br",
-        codeUrl: buildUrl + "/BrBuild.wasm.br",
-        streamingAssetsUrl: "StreamingAssets",
-        companyName: "Kizuna Project",
-        productName: "Kizuners Post 2022",
-        productVersion: "0.1",
-      };
-
-      // By default Unity keeps WebGL canvas render target size matched with
-      // the DOM size of the canvas element (scaled by window.devicePixelRatio)
-      // Set this to false if you want to decouple this synchronization from
-      // happening inside the engine, and you would instead like to size up
-      // the canvas DOM size and WebGL render target sizes yourself.
-      // config.matchWebGLToCanvasSize = false;
-
-      // if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-      //   // Mobile device style: fill the whole browser client area with the game canvas:
-      //   var meta = document.createElement('meta');
-      //   meta.name = 'viewport';
-      //   meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
-      //   document.getElementsByTagName('head')[0].appendChild(meta);
-      //   container.className = "unity-mobile";
-
-      //   // To lower canvas resolution on mobile devices to gain some
-      //   // performance, uncomment the following line:
-      //   // config.devicePixelRatio = 1;
-
-      //   canvas.style.width = window.innerWidth + 'px';
-      //   canvas.style.height = window.innerHeight + 'px';
-      // }
-
-      window.onload = window.onresize = function () {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-      }
-
-      loadingBar.style.display = "block";
-
-      var script = document.createElement("script");
-      script.src = loaderUrl;
-      script.onload = () => {
-        createUnityInstance(canvas, config, (progress) => {
-          progressBarFull.style.width = 100 * progress + "%";
-        }).then((unityInstance) => {
-          loadingBar.style.display = "none";
-        }).catch((message) => {
-          alert(message);
-        });
-      };
-      document.body.appendChild(script);
+    window.onresize = function () {
+      canvas.style.width = window.innerWidth + 'px';
+      canvas.style.height = window.innerHeight + 'px';
     }
+
+    loadingBar.style.display = "block";
+
+    var script = document.createElement("script");
+    script.src = loaderUrl;
+    script.onload = () => {
+      createUnityInstance(canvas, config, (progress) => {
+        progressBarFull.style.width = 100 * progress + "%";
+      }).then((unityInstance) => {
+        loadingBar.style.display = "none";
+      }).catch((message) => {
+        alert(message);
+      });
+    };
+    document.body.appendChild(script);
   </script>
-
 </body>
-
 </html>
