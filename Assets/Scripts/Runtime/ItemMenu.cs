@@ -48,7 +48,7 @@ public class ItemMenu : MonoBehaviour
     public float scrollSmooth = 0.1f;
     public float transitSmooth = 0.1f;
 
-    private ItemMenuState state = ItemMenuState.Closed;
+    private ItemMenuState state = ItemMenuState.Uninitialized;
     private InteractState interactState = InteractState.None;
     private ScrollInfo scrollInfo = new ScrollInfo();
     private ScrollRectInfo scrollRectInfo = new ScrollRectInfo();
@@ -57,7 +57,7 @@ public class ItemMenu : MonoBehaviour
     private IEnumerator scrollCoroutine = null;
     private IEnumerator transitCoroutine = null;
 
-    private SceneControl sceneControl;
+    private PlayControl playControl;
     private GameObject itemButtonContainer;
     private GameObject itemButtonPrefab;
     private ScrollRect scrollRect;
@@ -67,16 +67,11 @@ public class ItemMenu : MonoBehaviour
 
     private void Awake()
     {
-        this.sceneControl = CommonObjects.Get().sceneControl;
+        this.playControl = CommonObjects.Get().playControl;
         this.itemButtonContainer = CommonObjects.Get().itemButtonContainer;
         this.itemButtonPrefab = CommonObjects.Get().itemButtonPrefab;
         this.scrollRect = this.GetComponentInChildren<ScrollRect>();
         this.scrollViewRectControl = this.scrollRect.GetComponent<RectControl>();
-    }
-
-    private void Start()
-    {
-        this.ResetItemsAndButtons();
     }
 
     /*-- Callback -- */
@@ -106,7 +101,7 @@ public class ItemMenu : MonoBehaviour
             if (shouldStop)
             {
                 this.ExitState(ItemMenuState.ScrollingByScrollRect);
-                this.sceneControl.FocusItem(this.items[this.scrollInfo.selectedItemIndex]);
+                this.playControl.FocusItem(this.items[this.scrollInfo.selectedItemIndex]);
                 this.ScrollToNearest();
             }
         }
@@ -126,6 +121,11 @@ public class ItemMenu : MonoBehaviour
 
     private void SetState(ItemMenuState state)
     {
+        if (this.state == ItemMenuState.Uninitialized)
+        {
+            this.ResetItemsAndButtons();
+        }
+
         if (this.state == ItemMenuState.ScrollingBySceneControl)
         {
             if (this.scrollCoroutine != null)
@@ -156,7 +156,7 @@ public class ItemMenu : MonoBehaviour
 
         if (targetState == ItemMenuState.ScrollingByScrollRect)
         {
-            if (this.interactState == InteractState.MouseDown)
+            if (this.state >= ItemMenuState.Opened && this.interactState == InteractState.MouseDown)
             {
                 this.SetState(targetState);
             }
@@ -185,6 +185,9 @@ public class ItemMenu : MonoBehaviour
 
         switch (state)
         {
+        case ItemMenuState.Uninitialized:
+            this.SetState(ItemMenuState.Closed);
+            break;
         case ItemMenuState.Closed:
             this.SetState(ItemMenuState.Opened);
             break;
@@ -206,10 +209,9 @@ public class ItemMenu : MonoBehaviour
 
     public void ResetItemsAndButtons()
     {
-#if UNITY_EDITOR
         CommonObjects.Get().RetrieveItems();
-#endif
         this.items = CommonObjects.Get().items;
+
         this.RecreateItemButtons();
         this.ResetScrollInfo();
         this.UpdateItemButtonsOnScroll();

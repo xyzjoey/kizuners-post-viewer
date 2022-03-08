@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5749332763897309062}
   - component: {fileID: 5749332763897309057}
   - component: {fileID: 5749332763897309063}
-  - component: {fileID: -7280038052198265076}
+  - component: {fileID: -1980726029230679563}
   m_Layer: 0
   m_Name: MainIllust
   m_TagString: Item
@@ -102,7 +102,7 @@ MonoBehaviour:
   autoScale: 1
   autoPosXY: 1
   expectedCameraPos: {x: 0, y: 0, z: -50}
---- !u!114 &-7280038052198265076
+--- !u!114 &-1980726029230679563
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -111,12 +111,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5749332763897309056}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 479636beb95645d4895277a8ec1de80d, type: 3}
+  m_Script: {fileID: 11500000, guid: dd29a0b2d737bc24ab66c40687fe996e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
-  itemName: 
-  fontAsset: {fileID: 0}
-  imageUrl: 
-  floatingSpeed: 5
-  floatingAmplitude: 1
+  delay: 0
+  startAlpha: 0
+  targetAlpha: 1
+  fadeMagnitude: 0.1

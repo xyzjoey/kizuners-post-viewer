@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class CommonObjects : MonoBehaviour
 {
-    public SceneControl sceneControl;
+    public PlayControl playControl;
     public CameraControl cameraControl;
     public GameObject itemGroup;
     public ItemMenu itemMenu;
@@ -15,11 +15,6 @@ public class CommonObjects : MonoBehaviour
     public List<Item> items { get; private set; } = new List<Item>();
 
     static private CommonObjects instance = null;
-
-    private void Awake()
-    {
-        this.RetrieveItems();
-    }
 
     static public CommonObjects Get()
     {

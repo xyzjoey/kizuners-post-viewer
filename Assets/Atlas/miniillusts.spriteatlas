@@ -1,0 +1,136 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: miniillusts
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 4096
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 2
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: 5dd7fb1ff54143c47b4622e18488bb5d, type: 3}
+    - {fileID: 2800000, guid: 523ecc35d7e074a4ebb23bea25aeb6ca, type: 3}
+    - {fileID: 2800000, guid: 34e3de8b12460324aaeda51770b0f52a, type: 3}
+    - {fileID: 2800000, guid: fbfb77845d5403748873db8b760e6077, type: 3}
+    - {fileID: 2800000, guid: 5c157a792f8153a4fbaa6e18d09432f5, type: 3}
+    - {fileID: 2800000, guid: 89d097969f3265848984f71e0ffbfb87, type: 3}
+    - {fileID: 2800000, guid: 835c75082906a184ba8911bd4942d6d4, type: 3}
+    - {fileID: 2800000, guid: 1990674af83e2284db27cac8a901648c, type: 3}
+    - {fileID: 2800000, guid: 5dec8d00cbafd564891039ed825d223c, type: 3}
+    - {fileID: 2800000, guid: fd166ae2bbdecbc49aa9433bba3707ca, type: 3}
+    - {fileID: 2800000, guid: cd50e905e930ee64b89a2f7013f74eb7, type: 3}
+    - {fileID: 2800000, guid: ea03a9e381ef85846a00c1224557334e, type: 3}
+    - {fileID: 2800000, guid: ea15f8f4bb264ab488b6d4b16f6ef006, type: 3}
+    - {fileID: 2800000, guid: 3c071bdc063ad84449c13ee2195dbd2a, type: 3}
+    - {fileID: 2800000, guid: 599f1aadf043066438db3aea9714543b, type: 3}
+    - {fileID: 2800000, guid: 77c068daae12e824e8baca60e8fdb91f, type: 3}
+    - {fileID: 2800000, guid: 1fb5a7105b0919848b7e650a95f9a552, type: 3}
+    - {fileID: 2800000, guid: baee12f11c6670e49b28c1cc8b8e4cad, type: 3}
+    - {fileID: 2800000, guid: aec26c8a91672664ebc49784f4006d5e, type: 3}
+    - {fileID: 2800000, guid: 6e5433f554a813a46ac3ac767c3e8e74, type: 3}
+    - {fileID: 2800000, guid: 343b5fe95f13b6542845c02dd76ead33, type: 3}
+    - {fileID: 2800000, guid: 846d8bcce9792dc4a902452794f1354e, type: 3}
+    - {fileID: 2800000, guid: 70f3527903873354881101b0cbdceb04, type: 3}
+    - {fileID: 2800000, guid: 4e01173c04fdef3488c8d455b3f69fab, type: 3}
+    - {fileID: 2800000, guid: b54cd074fcb8563489add1b2e1a59466, type: 3}
+    - {fileID: 2800000, guid: 84fe275a22893e74ea9c3c98dd72ddde, type: 3}
+    - {fileID: 2800000, guid: f87e2a2a9bfa04647b3b4d622073e6be, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 5dec8d00cbafd564891039ed825d223c, type: 3}
+  - {fileID: 21300000, guid: 1fb5a7105b0919848b7e650a95f9a552, type: 3}
+  - {fileID: 21300000, guid: baee12f11c6670e49b28c1cc8b8e4cad, type: 3}
+  - {fileID: 21300000, guid: fd166ae2bbdecbc49aa9433bba3707ca, type: 3}
+  - {fileID: 21300000, guid: ea03a9e381ef85846a00c1224557334e, type: 3}
+  - {fileID: 21300000, guid: b54cd074fcb8563489add1b2e1a59466, type: 3}
+  - {fileID: 21300000, guid: fbfb77845d5403748873db8b760e6077, type: 3}
+  - {fileID: 21300000, guid: ea15f8f4bb264ab488b6d4b16f6ef006, type: 3}
+  - {fileID: 21300000, guid: cd50e905e930ee64b89a2f7013f74eb7, type: 3}
+  - {fileID: 21300000, guid: 523ecc35d7e074a4ebb23bea25aeb6ca, type: 3}
+  - {fileID: 21300000, guid: 6e5433f554a813a46ac3ac767c3e8e74, type: 3}
+  - {fileID: 21300000, guid: 89d097969f3265848984f71e0ffbfb87, type: 3}
+  - {fileID: 21300000, guid: 835c75082906a184ba8911bd4942d6d4, type: 3}
+  - {fileID: 21300000, guid: 70f3527903873354881101b0cbdceb04, type: 3}
+  - {fileID: 21300000, guid: 5c157a792f8153a4fbaa6e18d09432f5, type: 3}
+  - {fileID: 21300000, guid: 343b5fe95f13b6542845c02dd76ead33, type: 3}
+  - {fileID: 21300000, guid: f87e2a2a9bfa04647b3b4d622073e6be, type: 3}
+  - {fileID: 21300000, guid: 1990674af83e2284db27cac8a901648c, type: 3}
+  - {fileID: 21300000, guid: 84fe275a22893e74ea9c3c98dd72ddde, type: 3}
+  - {fileID: 21300000, guid: aec26c8a91672664ebc49784f4006d5e, type: 3}
+  - {fileID: 21300000, guid: 77c068daae12e824e8baca60e8fdb91f, type: 3}
+  - {fileID: 21300000, guid: 34e3de8b12460324aaeda51770b0f52a, type: 3}
+  - {fileID: 21300000, guid: 4e01173c04fdef3488c8d455b3f69fab, type: 3}
+  - {fileID: 21300000, guid: 846d8bcce9792dc4a902452794f1354e, type: 3}
+  - {fileID: 21300000, guid: 3c071bdc063ad84449c13ee2195dbd2a, type: 3}
+  - {fileID: 21300000, guid: 599f1aadf043066438db3aea9714543b, type: 3}
+  - {fileID: 21300000, guid: 5dd7fb1ff54143c47b4622e18488bb5d, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - MiniIllust_spica 1
+  - "MiniIllust_\u307B\u3080\u3089"
+  - "MiniIllust_\u308F\u3089\u3073\u3082\u3061"
+  - MiniIllust_spica
+  - "MiniIllust_\u3048\u308B\u3068\u3089\u3044\u3068"
+  - "MiniIllust_\u7A76\u6975\u306E\u5929\u7F70 4"
+  - MiniIllust_JustPeasu
+  - "MiniIllust_\u304B\u3050\u3084"
+  - "MiniIllust_\u3042\u3044\u3089"
+  - MiniIllust_argon
+  - "MiniIllust_\u30D2\u30EB\u30CD\u30EB"
+  - MiniIllust_litegolyat
+  - MiniIllust_Mikko Bryan Clear
+  - "MiniIllust_\u7A76\u6975\u306E\u5929\u7F70 2"
+  - MiniIllust_Kongmimi
+  - "MiniIllust_\u30D5\u30A9\u30EB\u30C6"
+  - "MiniIllust_\u7A76\u6975\u306E\u5929\u7F70"
+  - MiniIllust_MOTO
+  - "MiniIllust_\u7A76\u6975\u306E\u5929\u7F70 5"
+  - "MiniIllust_\u30B7\u30E5\u30D3"
+  - "MiniIllust_\u3057\u3044\u305F\u3051"
+  - MiniIllust_Eris
+  - "MiniIllust_\u7A76\u6975\u306E\u5929\u7F70 3"
+  - "MiniIllust_\u7A76\u6975\u306E\u5929\u7F70 1"
+  - "MiniIllust_\u304F\u3058\u3089\u3061\u3083\u3093"
+  - "MiniIllust_\u304F\u3081\u306E"
+  - MiniIllust_argon 1
+  m_RenderDataMap: {}
+  m_Tag: miniillusts
+  m_IsVariant: 0

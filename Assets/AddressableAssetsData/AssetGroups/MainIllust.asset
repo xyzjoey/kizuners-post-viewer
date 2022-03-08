@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: MainIllust
+  m_EditorClassIdentifier: 
+  m_GroupName: MainIllust
+  m_Data:
+    m_SerializedData: []
+  m_GUID: d1282cf718366cf41942defab5b577cd
+  m_SerializeEntries:
+  - m_GUID: 6f489b9a9e229f3449a5121ca30b5d6a
+    m_Address: Assets/SceneReferences/MainIllust8K.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 64151108df6bb5d45815809b6904cece
+    m_Address: hair_other
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 27345a42ac1c81c439984db33601489b
+    m_Address: aichan
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 9dcd8860fa975cb43836027e08715eac, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 63edccdb1c259e74a8365c6524444259, type: 2}
+    - {fileID: 11400000, guid: d26b3cd0762970946aafad022ebe1213, type: 2}

@@ -9,114 +9,18 @@ using UnityEngine.Networking;
 
 public class SpriteLoader : MonoBehaviour
 {
-    public AssetReference spriteReference;
     // public bool correctAlphaOnLoad = true;
-
-    private SpriteRenderer spriteRenderer;
-
-    /*-- Unity event -- */
-
-    private void Awake()
-    {
-        this.InitObjectReference();
-    }
-
-    private void Start()
-    {
-        this.LoadSpriteReference();
-    }
-
-#if UNITY_EDITOR
-    [UnityEditor.Callbacks.DidReloadScripts]
-    private static void OnScriptsReloaded()
-    {
-        LoadAllSpriteReference();
-    }
-#endif
-
-    /*-- Common -- */
-
-    private void InitObjectReference()
-    {
-        this.spriteRenderer = this.GetComponent<SpriteRenderer>();
-    }
-
-    public void LoadSpriteReference()
-    {
-        if (this.spriteReference == null)
-        {
-            return;
-        }
-
-#if UNITY_EDITOR
-        if (!Application.IsPlaying(this.gameObject)) // edit mode
-        {
-            this.LoadSpriteReferenceInEditor();
-            return;
-        }
-#endif
-
-        this.LoadSpriteReferenceInRuntime();
-    }
-
-    private void LoadSpriteReferenceInRuntime()
-    {
-        Debug.Log("Loading Asset " + this.spriteReference.GetType());
-        // Debug.Log("Loading Asset " + this.spriteReference.GetType() + " " + (this.spriteReference.RuntimeKey).GetType());
-
-        var asyncOperation = Addressables.LoadAssetAsync<Sprite>(this.spriteReference);
-        
-        asyncOperation.Completed += (operation) =>
-        {
-            this.spriteRenderer.sprite = operation.Result;
-
-            Addressables.Release(operation);
-
-            Debug.Log("Load Asset Complete " + this.spriteRenderer.sprite);
-        };
-    }
-
-#if UNITY_EDITOR
-    private void LoadSpriteReferenceInEditor()
-    {
-        this.InitObjectReference();
-
-        var asyncOperation = Addressables.LoadResourceLocationsAsync(this.spriteReference);
-
-        asyncOperation.Completed += (operation) =>
-        {
-            var locations = operation.Result;
-
-            if (locations.Count > 0)
-            {
-                this.spriteRenderer.sprite = AssetDatabase.LoadAssetAtPath<Sprite>(locations[0].InternalId);
-            }
-
-            Addressables.Release(operation);
-        };
-    }
-#endif
 
     /*-- Editor -- */
 
 #if UNITY_EDITOR
-    public static void LoadAllSpriteReference()
-    {
-        var spriteLoaders = Object.FindObjectsOfType<SpriteLoader>();
-
-        foreach (var spriteLoader in spriteLoaders)
-        {
-            spriteLoader.LoadSpriteReference();
-        }
-    }
-
     public static void UnloadAllSprites()
     {
         var spriteLoaders = Object.FindObjectsOfType<SpriteLoader>();
 
         foreach (var spriteLoader in spriteLoaders)
         {
-            spriteLoader.spriteRenderer.sprite = null;
+            spriteLoader.GetComponent<SpriteRenderer>().sprite = null;
         }
     }
 

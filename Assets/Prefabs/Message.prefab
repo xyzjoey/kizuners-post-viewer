@@ -700,6 +700,7 @@ GameObject:
   - component: {fileID: 6748752838782900470}
   - component: {fileID: 5749332763897309063}
   - component: {fileID: -2414463699314826712}
+  - component: {fileID: 5473508366566512326}
   m_Layer: 0
   m_Name: Message
   m_TagString: Item
@@ -825,3 +826,19 @@ MonoBehaviour:
   imageUrl: 
   floatingSpeed: 1
   floatingAmplitude: 0.8
+--- !u!114 &5473508366566512326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5749332763897309056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd29a0b2d737bc24ab66c40687fe996e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0
+  startAlpha: 0
+  targetAlpha: 1
+  fadeMagnitude: 0.1

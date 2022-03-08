@@ -6,7 +6,7 @@
 export/
 resources/
 *Build/
-Assets/Images/Generated
+Assets/Images/
 
 .vscode
 

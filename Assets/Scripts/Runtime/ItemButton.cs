@@ -8,7 +8,7 @@ public class ItemButton : MonoBehaviour
 {
     private Item targetItem = null;
     private RectControl rectControl;
-    private SceneControl sceneControl;
+    private PlayControl playControl;
 
     private void Awake()
     {
@@ -18,7 +18,7 @@ public class ItemButton : MonoBehaviour
     private void InitObjectReference()
     {
         this.rectControl = this.GetComponent<RectControl>();
-        this.sceneControl = CommonObjects.Get().sceneControl;
+        this.playControl = CommonObjects.Get().playControl;
     }
 
     public void SetTargetItem(Item item)

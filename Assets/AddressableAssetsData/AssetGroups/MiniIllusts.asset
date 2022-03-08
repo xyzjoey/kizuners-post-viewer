@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: MiniIllusts
+  m_EditorClassIdentifier: 
+  m_GroupName: MiniIllusts
+  m_Data:
+    m_SerializedData: []
+  m_GUID: dff2b478450138141a29d28f32e61eca
+  m_SerializeEntries:
+  - m_GUID: a962c8f5698c5e54ea4fc22431d972a9
+    m_Address: Assets/SceneReferences/MiniIllusts.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c5d9bae06e6be934dae9a0853ded3c81
+    m_Address: miniillusts
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 9dcd8860fa975cb43836027e08715eac, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: d67307351626ae441924648493f2ad37, type: 2}
+    - {fileID: 11400000, guid: 5629528add50a4c4bab06d3d033770d0, type: 2}

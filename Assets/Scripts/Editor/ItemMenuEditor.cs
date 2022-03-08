@@ -12,9 +12,10 @@ public class ItemMenuEditor : Editor
 
     void DrawResetContentButton()
     {
-        if (GUILayout.Button("Reset Item Buttons"))
-        {
-            ((ItemMenu)this.target).ResetItemsAndButtons();
-        }
+        // for debug
+        // if (GUILayout.Button("Reset Item Buttons"))
+        // {
+        //     ((ItemMenu)this.target).ResetItemsAndButtons();
+        // }
     }
 }

@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Messages
+  m_EditorClassIdentifier: 
+  m_GroupName: Messages
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 313c922ec7d44da4183d27dffad6a73a
+  m_SerializeEntries:
+  - m_GUID: 4a7ae416890b86c4c9eedc2f5faa9937
+    m_Address: Assets/SceneReferences/Messages.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 54effeabea1635148819896aa1be5bc4
+    m_Address: messages
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 9dcd8860fa975cb43836027e08715eac, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: ec163e80cafaf3a429f18df9a02e633a, type: 2}
+    - {fileID: 11400000, guid: 87513e02c588f614aa0884423f39f997, type: 2}

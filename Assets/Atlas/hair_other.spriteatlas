@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: hair_other
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 4096
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 2
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: 40988079fbb65e9458002cc3535e0c58, type: 3}
+    - {fileID: 2800000, guid: 8a4d2a112b815cd49a25de19a803427a, type: 3}
+    - {fileID: 2800000, guid: 508109cee5ae94841aef140a08174cdd, type: 3}
+    - {fileID: 2800000, guid: 7356eccc01f4b3c468af79fd4f77cf77, type: 3}
+    - {fileID: 2800000, guid: 4e463d9106dc0e64cb471c5d8a035607, type: 3}
+    - {fileID: 2800000, guid: 7c0d50ffbc21fcc4193a9ebd49c2e7a4, type: 3}
+    - {fileID: 2800000, guid: f48ebf19f999f464685cf8c6c75263b0, type: 3}
+    - {fileID: 2800000, guid: d8e1ac5215215c149af9900e0284b21d, type: 3}
+    bindAsDefault: 0
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 8a4d2a112b815cd49a25de19a803427a, type: 3}
+  - {fileID: 21300000, guid: 4e463d9106dc0e64cb471c5d8a035607, type: 3}
+  - {fileID: 21300000, guid: d8e1ac5215215c149af9900e0284b21d, type: 3}
+  - {fileID: 21300000, guid: f48ebf19f999f464685cf8c6c75263b0, type: 3}
+  - {fileID: 21300000, guid: 40988079fbb65e9458002cc3535e0c58, type: 3}
+  - {fileID: 21300000, guid: 7356eccc01f4b3c468af79fd4f77cf77, type: 3}
+  - {fileID: 21300000, guid: 508109cee5ae94841aef140a08174cdd, type: 3}
+  - {fileID: 21300000, guid: 7c0d50ffbc21fcc4193a9ebd49c2e7a4, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - MainIllust_aichan_hair_small1
+  - MainIllust_effect_polygon1
+  - MainIllust_bg
+  - MainIllust_effect_polygon3
+  - MainIllust_aichan_hair
+  - MainIllust_effect_particle
+  - MainIllust_bg_line
+  - MainIllust_effect_polygon2
+  m_RenderDataMap: {}
+  m_Tag: hair_other
+  m_IsVariant: 0
