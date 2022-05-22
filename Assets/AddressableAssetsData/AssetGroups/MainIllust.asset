@@ -21,12 +21,12 @@ MonoBehaviour:
     m_Address: Assets/SceneReferences/MainIllust8K.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 64151108df6bb5d45815809b6904cece
-    m_Address: hair_other
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: 27345a42ac1c81c439984db33601489b
     m_Address: aichan
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 64151108df6bb5d45815809b6904cece
+    m_Address: hair_other
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0

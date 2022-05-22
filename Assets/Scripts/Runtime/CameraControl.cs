@@ -21,6 +21,7 @@ public class LocalZoomLevel
 
 public class CameraControl : MonoBehaviour
 {
+    public float focusDirectionMultiplier;
     public float rotationMultiplier;
     public float moveMultiplier;
     public float zoomMultiplier;
@@ -36,22 +37,28 @@ public class CameraControl : MonoBehaviour
     public float zoomLocalSmooth;
 
     // config
-    Vector3 defaultCenter;
     public CenterZoomLevel centerZoomLevel;
     public LocalZoomLevel localZoomLevel;
-    
+
+    // config taken on start
+    private Vector3 defaultCenter;
+    private Vector3 defaultWorldPosition;
+
     // runtime value
-    Vector3 targetRotation; // euler
-    Vector3 targetCenter;
-    Vector3 targetLocalPosition;
-    float targetCenterZoom;
-    float targetLocalZoom;
+    private Vector3 baseRotation;
+    private Vector3 targetRotation; // euler
+    private Vector3 targetCenter;
+    private Vector3 targetLocalPosition;
+    private float targetCenterZoom;
+    private float targetLocalZoom;
 
     void Start()
     {
         this.defaultCenter = this.transform.position;
+        this.defaultWorldPosition = Camera.main.transform.position;
         this.localZoomLevel.initial = Mathf.Abs(Camera.main.transform.localPosition.z);
 
+        this.SetBaseRotation(Vector3.zero);
         this.SetRotation(Vector3.zero);
         this.SetCenter(Vector3.zero);
         this.SetLocalPosition(Vector3.zero);
@@ -61,7 +68,6 @@ public class CameraControl : MonoBehaviour
 
     void Update()
     {
-        // Debug.Log(Time.deltaTime);
         this.Rotate();
         this.Move();
         this.Zoom();
@@ -76,9 +82,9 @@ public class CameraControl : MonoBehaviour
 
     public void RotateByMouse(MouseInfo mouseInfo)
     {
-        Vector3 rotation = this.targetRotation;
-        rotation.x = mouseInfo.normalizedY * rotationMultiplier;
-        rotation.y = -mouseInfo.normalizedX * rotationMultiplier;
+        Vector3 rotation = this.baseRotation;
+        rotation.x += mouseInfo.normalizedY * rotationMultiplier;
+        rotation.y -= mouseInfo.normalizedX * rotationMultiplier;
 
         this.SetRotation(rotation);
     }
@@ -101,10 +107,11 @@ public class CameraControl : MonoBehaviour
     {
         Item item = gameObject.GetComponent<Item>();
 
-        var rotation = this.targetRotation;
-        rotation.z = gameObject.transform.rotation.eulerAngles.z;
+        Vector3 forward = gameObject.transform.forward;
+        forward = Vector3.Lerp(Vector3.forward, forward, this.focusDirectionMultiplier);
 
-        this.SetRotation(rotation);
+        this.SetBaseRotation(Quaternion.LookRotation(forward, gameObject.transform.up).eulerAngles);
+        this.ResetRotation();
         this.SetCenter(gameObject.transform.position);
         this.SetCenterZoom(item.type == ItemType.Message ? this.centerZoomLevel.focusMessage : this.centerZoomLevel.focusIllust);
         this.SetLocalZoom(this.localZoomLevel.initial);
@@ -112,18 +119,26 @@ public class CameraControl : MonoBehaviour
 
     public void Unfocus()
     {
-        var rotation = this.targetRotation;
-        rotation.z = 0;
-
-        this.SetRotation(rotation);
+        this.SetBaseRotation(Vector3.zero);
+        this.ResetRotation();
         this.SetCenter(this.defaultCenter);
         this.SetCenterZoom(this.centerZoomLevel.unfocus);
         this.SetLocalZoom(this.localZoomLevel.initial);
     }
 
+    void SetBaseRotation(Vector3 rotation)
+    {
+        this.baseRotation = rotation;
+    }
+
     void SetRotation(Vector3 rotation)
     {
         this.targetRotation = rotation;
+    }
+
+    void ResetRotation()
+    {
+        this.SetRotation(this.baseRotation);
     }
 
     void SetCenter(Vector3 center)

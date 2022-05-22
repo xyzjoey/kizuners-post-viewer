@@ -20,9 +20,12 @@ public class PlayControl : MonoBehaviour
     {
         this.mouseInfo.UpdateInfo();
 
-        this.cameraControl.UpdateOnMouse(this.mouseInfo);
+        if (!(this.mouseInfo.pointerType == PointerType.Touch && this.mouseInfo.pointerState == PointerState.ShortDown))
+        {
+            this.cameraControl.UpdateOnMouse(this.mouseInfo);
+        }
 
-        if (this.mouseInfo.isShortClick)
+        if (this.mouseInfo.pointerState == PointerState.OnShortUp)
         {
             if (this.mouseInfo.target == null)
             {
@@ -45,28 +48,36 @@ public class PlayControl : MonoBehaviour
             }
         }
 
+        bool isPrevPointerDown = MouseInfo.IsPointerStateWhateverDown(this.mouseInfo.prevPointerState);
+        bool isPointerDown = MouseInfo.IsPointerStateWhateverDown(this.mouseInfo.pointerState);
+        bool isUpDownChanged = isPrevPointerDown != isPointerDown;
+
         if (this.IsTargetChanged())
         {
-            if (this.mouseInfo.state == MouseState.Down)
+            if (isPointerDown)
             {
                 this.SetInteractTargetState(this.mouseInfo.target, InteractState.MouseDown);
             }
-            else
+            else if (this.mouseInfo.pointerType != PointerType.Touch)
             {
                 this.SetInteractTargetState(this.mouseInfo.target, InteractState.MouseOver);
             }
 
             this.SetInteractTargetState(this.mouseInfo.prevTarget, InteractState.None);
         }
-        else if (this.mouseInfo.IsStateChanged())
+        else if (isUpDownChanged)
         {
-            if (this.mouseInfo.state == MouseState.Down)
+            if (isPointerDown)
             {
                 this.SetInteractTargetState(this.mouseInfo.target, InteractState.MouseDown);
             }
-            else
+            else if (this.mouseInfo.pointerType != PointerType.Touch)
             {
                 this.SetInteractTargetState(this.mouseInfo.target, InteractState.MouseOver);
+            }
+            else
+            {
+                this.SetInteractTargetState(this.mouseInfo.target, InteractState.None);
             }
         }
     }
@@ -110,6 +121,11 @@ public class PlayControl : MonoBehaviour
 
     public void OnItemClick(Item item)
     {
+        if (item == null)
+        {
+            return;
+        }
+
         this.FocusItem(item);
         this.itemMenu.ScrollTo(item);
         this.itemMenu.EnterState(ItemMenuState.ScrollingBySceneControl);
@@ -117,6 +133,11 @@ public class PlayControl : MonoBehaviour
 
     public void FocusItem(Item item)
     {
+        if (item == null)
+        {
+            return;
+        }
+
         if (this.focusedItem != null)
         {
             this.focusedItem.SetFocus(false);

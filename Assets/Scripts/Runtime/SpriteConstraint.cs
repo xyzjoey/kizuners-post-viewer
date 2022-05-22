@@ -9,79 +9,109 @@ using UnityEngine;
 public class SpriteConstraint : MonoBehaviour
 {
 #if UNITY_EDITOR
+    class TransformInfo
+    {
+        public Vector3 pos;
+        public float scale;
+    }
 
     public bool autoSort = true;
     public bool autoScale = false;
     public bool autoPosXY = false;
 
-    public Vector3 expectedCameraPos = new Vector3(0, 0, -50);
-
-    private Vector3 prevPos;
+    private TransformInfo prevTransformInfo = null;
 
     SpriteConstraint()
     {
         EditorApplication.update += this.EditorUpdateCallback;
     }
 
-    void Start()
+    ~SpriteConstraint()
     {
-        this.prevPos = this.transform.position;
+        EditorApplication.update -= this.EditorUpdateCallback;
     }
 
-    void OnValidate()
+    private void Start()
     {
-        this.prevPos = this.transform.position;
+        this.SetPrevInfo();
     }
 
-    void Reset()
+    private void OnValidate()
+    {
+        this.SetPrevInfo();
+    }
+
+    private void SetPrevInfo()
+    {
+        if (this.prevTransformInfo == null)
+        {
+            this.prevTransformInfo = new TransformInfo();
+        }
+        
+        this.prevTransformInfo.pos = this.transform.position;
+        this.prevTransformInfo.scale = this.transform.localScale.z;
+    }
+
+    private void Reset()
     {
         this.SortOnZ();
     }
 
-    void EditorUpdateCallback()
+    private void EditorUpdateCallback()
     {
         if (this == null) // FIXME to not need to check null
         {
             return;
         }
 
-        this.SortOnZ();
-        this.ScaleOnZ();
-        this.MoveOnZ();
+        if (this.prevTransformInfo != null)
+        {
+            this.UpdateWithConstraint(this.prevTransformInfo.pos, this.prevTransformInfo.scale, Camera.main.transform.position);
+        }
+
+        this.SetPrevInfo();
     }
 
-    void ScaleOnZ()
+    public void UpdateWithConstraint(Vector3 prevPos, float prevScale, Vector3 referenceCameraPos)
     {
-        if (!this.autoScale)
+        if (prevPos == this.transform.position)
         {
             return;
         }
 
-        float scale = (this.transform.position.z - expectedCameraPos.z) / (0 - expectedCameraPos.z);
-        this.transform.localScale = Vector3.one * scale;
-    }
-
-    void MoveOnZ()
-    {
-        if (!this.autoPosXY || this.prevPos == this.transform.position)
+        if (this.autoScale)
         {
-            return;
+            this.ScaleOnZ(prevPos, prevScale, referenceCameraPos);
         }
 
-        float scale = (this.transform.position.z - expectedCameraPos.z) / (this.prevPos.z - expectedCameraPos.z);
-        var newPos = expectedCameraPos + (this.prevPos - expectedCameraPos) * scale;
+        if (this.autoPosXY)
+        {
+            this.MoveOnZ(prevPos, referenceCameraPos);
+        }
+
+        if (this.autoSort)
+        {
+            this.SortOnZ();
+        }
+    }
+
+    private void ScaleOnZ(Vector3 prevPos, float prevScale, Vector3 referenceCameraPos)
+    {
+        float scale = (this.transform.position.z - referenceCameraPos.z) / (prevPos.z - referenceCameraPos.z);
+
+        this.transform.localScale = Vector3.one * prevScale * scale;
+    }
+
+    private void MoveOnZ(Vector3 prevPos, Vector3 referenceCameraPos)
+    {
+        float scale = (this.transform.position.z - referenceCameraPos.z) / (prevPos.z - referenceCameraPos.z);
+        var newPos = referenceCameraPos + (prevPos - referenceCameraPos) * scale;
 
         this.transform.position = new Vector3(newPos.x, newPos.y, this.transform.position.z);
-        this.prevPos = this.transform.position;
     }
 
-    void SortOnZ()
+    private void SortOnZ()
     {
-        if (!this.autoSort)
-        {
-            return;
-        }
-
         var renderer = this.GetComponent<SpriteRenderer>();
         renderer.sortingOrder = Mathf.RoundToInt(-100 * this.transform.position.z);
     }

@@ -7,6 +7,7 @@ public class CommonObjects : MonoBehaviour
 {
     public PlayControl playControl;
     public CameraControl cameraControl;
+    public Camera backgroundCamera;
     public GameObject itemGroup;
     public ItemMenu itemMenu;
     public GameObject itemButtonContainer;
@@ -24,28 +25,5 @@ public class CommonObjects : MonoBehaviour
         }
 
         return instance;
-    }
-
-    public void RetrieveItems()
-    {
-        this.items.Clear();
-
-        if (this.itemGroup != null)
-        {
-            this.RetrieveItemsRecursively(this.itemGroup);
-        }
-    }
-
-    private void RetrieveItemsRecursively(GameObject gameObject)
-    {
-        foreach (Transform child in gameObject.transform)
-        {
-            if (child.tag == Tag.Item)
-            {
-                this.items.Add(child.GetComponent<Item>());
-            }
-
-            this.RetrieveItemsRecursively(child.gameObject);
-        }
     }
 }

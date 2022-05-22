@@ -8,7 +8,7 @@ public class ItemEditor : Editor
 
     public override void OnInspectorGUI()
     {
-        item = (Item)this.target;
+        this.item = (Item)this.target;
 
         this.DrawDefaultInspector();
         this.DrawButtons();
@@ -16,18 +16,13 @@ public class ItemEditor : Editor
 
     void DrawButtons()
     {
-        // if (GUILayout.Button("Set All Missing Item Name from Object Name"))
-        // {
-        //     ((Item)this.target).SetAllMissingItemNameFromName();
-        // }
-
         if (GUILayout.Button("Load Image from url"))
         {
             this.LoadImage();
         }
     }
 
-    public void LoadImage()
+    private void LoadImage()
     {
         if (this.item.imageUrl == "")
         {
@@ -37,5 +32,5 @@ public class ItemEditor : Editor
         }
 
         this.item.StartCoroutine(this.item.GetComponent<SpriteLoader>().LoadSpriteFromUrl(this.item.imageUrl));
-    }  
+    }
 }

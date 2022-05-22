@@ -17,12 +17,12 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 313c922ec7d44da4183d27dffad6a73a
   m_SerializeEntries:
-  - m_GUID: 4a7ae416890b86c4c9eedc2f5faa9937
-    m_Address: Assets/SceneReferences/Messages.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: 54effeabea1635148819896aa1be5bc4
     m_Address: messages
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4a7ae416890b86c4c9eedc2f5faa9937
+    m_Address: Assets/SceneReferences/Messages.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0

@@ -33,6 +33,11 @@ public class ItemButton : MonoBehaviour
         TMP_Text text = this.GetComponentInChildren<TMP_Text>();
         text.text = item.itemName;
         text.font = item.fontAsset;
+
+        if (item.fontAsset == null)
+        {
+            Debug.LogWarning(item + ": no font set");
+        }
     }
 
     public Item GetTargetItem()

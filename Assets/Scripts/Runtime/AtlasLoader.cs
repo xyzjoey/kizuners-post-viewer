@@ -1,12 +1,15 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.ResourceLocations;
 using UnityEngine.U2D;
 
 public class AtlasLoader : MonoBehaviour
 {
     private void OnEnable()
     {
+        SpriteAtlasManager.atlasRequested -= RequestAtlas;
         SpriteAtlasManager.atlasRequested += RequestAtlas;
     }
 
@@ -29,4 +32,13 @@ public class AtlasLoader : MonoBehaviour
             }
         };
     }
+
+    // private bool IsAddressableExist(object key) {
+    //     foreach (var l in Addressables.ResourceLocators) {
+    //         IList<IResourceLocation> locs;
+    //         if (l.Locate(key, typeof(SpriteAtlas), out locs))
+    //             return true;
+    //     }
+    //     return false;
+    // }
 }

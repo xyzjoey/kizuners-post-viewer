@@ -608,7 +608,7 @@ PlayerSettings:
   webGLTemplate: PROJECT:MyTemplate
   webGLAnalyzeBuildSize: 0
   webGLUseEmbeddedResources: 0
-  webGLCompressionFormat: 0
+  webGLCompressionFormat: 2
   webGLWasmArithmeticExceptions: 0
   webGLLinkerTarget: 1
   webGLThreadsSupport: 0
@@ -702,7 +702,7 @@ PlayerSettings:
   vrEditorSettings: {}
   cloudServicesEnabled:
     Build: 0
-    Collab: 1
+    Collab: 0
     Game Performance: 0
     Legacy Analytics: 0
     Purchasing: 0
@@ -725,7 +725,7 @@ PlayerSettings:
   cloudProjectId: f22e2814-bdbd-4f5f-a495-919800f77e20
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: KizunaAI Illust Viewer
+  projectName: Kizuners Post 2022
   organizationId: kizunaproject
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0

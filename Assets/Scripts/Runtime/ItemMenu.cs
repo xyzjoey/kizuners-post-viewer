@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public enum ItemMenuState
 {
-    Uninitialized,
     Closed,
     Opened,
     ScrollingByScrollRect,
@@ -22,8 +21,8 @@ public class ScrollRectInfo
 
 public class ScrollInfo
 {
-    public float contentInterval;
-    public float screenInterval;
+    public float contentInterval = 0.1f;
+    public float screenInterval = 0.1f;
 
     public float contentPosition = 0f; // [0f, 1f] // top to down // position of screenDefaultCenter in all content
     public float screenDefaultCenter = 0.5f;
@@ -48,7 +47,7 @@ public class ItemMenu : MonoBehaviour
     public float scrollSmooth = 0.1f;
     public float transitSmooth = 0.1f;
 
-    private ItemMenuState state = ItemMenuState.Uninitialized;
+    private ItemMenuState state = ItemMenuState.Closed;
     private InteractState interactState = InteractState.None;
     private ScrollInfo scrollInfo = new ScrollInfo();
     private ScrollRectInfo scrollRectInfo = new ScrollRectInfo();
@@ -74,7 +73,19 @@ public class ItemMenu : MonoBehaviour
         this.scrollViewRectControl = this.scrollRect.GetComponent<RectControl>();
     }
 
+    private void Start()
+    {
+        this.ResetItemButtons();
+    }
+
     /*-- Callback -- */
+
+    public void OnItemChanged(List<Item> items)
+    {
+        this.items = items;
+        this.scrollInfo.contentInterval = 1f / this.items.Count;
+        this.UpdateItemButtonsOnScroll();
+    }
 
     public void OnScrollRectScrolled(Vector2 normalizedPosition)
     {
@@ -101,7 +112,10 @@ public class ItemMenu : MonoBehaviour
             if (shouldStop)
             {
                 this.ExitState(ItemMenuState.ScrollingByScrollRect);
-                this.playControl.FocusItem(this.items[this.scrollInfo.selectedItemIndex]);
+                if (this.items.Count > 0)
+                {
+                    this.playControl.FocusItem(this.items[this.scrollInfo.selectedItemIndex]);
+                }
                 this.ScrollToNearest();
             }
         }
@@ -121,11 +135,6 @@ public class ItemMenu : MonoBehaviour
 
     private void SetState(ItemMenuState state)
     {
-        if (this.state == ItemMenuState.Uninitialized)
-        {
-            this.ResetItemsAndButtons();
-        }
-
         if (this.state == ItemMenuState.ScrollingBySceneControl)
         {
             if (this.scrollCoroutine != null)
@@ -185,9 +194,6 @@ public class ItemMenu : MonoBehaviour
 
         switch (state)
         {
-        case ItemMenuState.Uninitialized:
-            this.SetState(ItemMenuState.Closed);
-            break;
         case ItemMenuState.Closed:
             this.SetState(ItemMenuState.Opened);
             break;
@@ -206,12 +212,8 @@ public class ItemMenu : MonoBehaviour
     }
 
     /*-- reset -- */
-
-    public void ResetItemsAndButtons()
+    public void ResetItemButtons()
     {
-        CommonObjects.Get().RetrieveItems();
-        this.items = CommonObjects.Get().items;
-
         this.RecreateItemButtons();
         this.ResetScrollInfo();
         this.UpdateItemButtonsOnScroll();
@@ -219,14 +221,13 @@ public class ItemMenu : MonoBehaviour
 
     private void ResetScrollInfo()
     {
-        if (this.items.Count == 0)
-        {
-            return;
-        }
-
         this.scrollInfo = new ScrollInfo();
-        this.scrollInfo.contentInterval = 1f / this.items.Count;
         this.scrollInfo.screenInterval = 1f / this.visibleItemButtonNum;
+
+        if (this.items.Count > 0)
+        {
+            this.scrollInfo.contentInterval = 1f / this.items.Count;
+        }
     }
 
     private void RecreateItemButtons()
@@ -267,6 +268,11 @@ public class ItemMenu : MonoBehaviour
 
     private int LoopItemIndex(int index)
     {
+        if (this.items.Count == 0)
+        {
+            return 0;
+        }
+
         int modIndex = index % this.items.Count;
 
         if (modIndex < 0)
@@ -355,13 +361,18 @@ public class ItemMenu : MonoBehaviour
 
     public void ScrollTo(Item item)
     {
+        if (this.items.Count == 0)
+        {
+            return;
+        }
+
         int itemIndex = this.items.FindIndex(x => (x == item));
         this.ScrollTo(itemIndex);
     }
 
     private void ScrollTo(int itemIndex)
     {
-        if (itemIndex < 0)
+        if (itemIndex < 0 || this.items.Count == 0)
         {
             return;
         }
@@ -428,22 +439,25 @@ public class ItemMenu : MonoBehaviour
 
     void UpdateItemButtonsOnScroll()
     {
-        if (this.items.Count == 0)
-        {
-            return;
-        }
-
         int itemButtonNum = this.GetItemButtonNum();
         int middleIndex = itemButtonNum / 2;
 
         for (int i = 0; i < itemButtonNum; ++i)
         {
             ItemButton itemButton = this.GetItemButton(i);
-            int itemIndex = this.LoopItemIndex(this.scrollInfo.selectedItemIndex + i - middleIndex);
-            float position = this.scrollInfo.screenPosition + (i - middleIndex) * this.scrollInfo.screenInterval;
 
-            itemButton.SetTargetItem(this.items[itemIndex]);
+            float position = this.scrollInfo.screenPosition + (i - middleIndex) * this.scrollInfo.screenInterval;
             this.SetItemButtonPosition(itemButton, position);
+
+            if (this.items.Count > 0)
+            {
+                int itemIndex = this.LoopItemIndex(this.scrollInfo.selectedItemIndex + i - middleIndex);
+                itemButton.SetTargetItem(this.items[itemIndex]);
+            }
+            // else
+            // {
+            //     itemButton.SetTargetItem(null);
+            // }
         }
     }
 

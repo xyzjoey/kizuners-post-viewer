@@ -7,9 +7,9 @@ TagManager:
   - Item
   - ItemMenu
   - CameraControl
-  - ImageCamera
   - SceneControl
   - ItemButton
+  - BaseCamera
   layers:
   - Default
   - TransparentFX
@@ -46,6 +46,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: BackgroundSprite
+    uniqueID: 1253485325
     locked: 0
   - name: MainSprite
     uniqueID: 4162903337

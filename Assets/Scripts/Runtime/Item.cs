@@ -5,7 +5,6 @@ using TMPro;
 
 public enum ItemType
 {
-    MainIllust, // TODO remove MainIllust
     Message,
     MiniIllust
 }
@@ -21,35 +20,34 @@ public class Item : MonoBehaviour
 {
     public ItemType type;
     public string itemName = "";
+    public string itemNameAlphabet = "";
     public TMP_FontAsset fontAsset;
     public string imageUrl = "";
     public float floatingSpeed = 5f;
     public float floatingAmplitude = 1f;
+    public Material defaultMaterial = null;
+    public Material focusMaterial = null;
 
     private ItemState state = ItemState.Default;
     private InteractState interactState = InteractState.None;
     private Vector3 defaultPosition;
-    private bool enableFloating = false;
     private float floatingShift = 0f;
-    private GameObject glowLight = null;
+    private GameObject glowLight;
+    private SpriteRenderer spriteRenderer;
 
     /*-- Unity event -- */
 
     private void Awake()
     {
-        this.enableFloating = (this.type != ItemType.MainIllust);
         this.floatingShift = Random.Range(0f, 5f);
         this.defaultPosition = this.transform.position;
-
-        if (this.type != ItemType.MainIllust)
-        {
-            this.glowLight = this.transform.GetChild(0).gameObject;
-        }
+        this.glowLight = this.transform.GetChild(0).gameObject;
+        this.spriteRenderer = this.GetComponent<SpriteRenderer>();
     }
 
     private void Update()
     {
-        if (this.enableFloating && !this.IsState(ItemState.Focused))
+        if (!this.IsState(ItemState.Focused))
         {
             this.FloatUpAndDown();
         }
@@ -81,7 +79,7 @@ public class Item : MonoBehaviour
 
     public void SetInteractState(InteractState state)
     {
-        if (state == InteractState.MouseOver && this.state != ItemState.Focused)
+        if (state >= InteractState.MouseOver && this.state != ItemState.Focused)
         {
             this.SetGlow(true);
         }
@@ -111,13 +109,19 @@ public class Item : MonoBehaviour
         }
 
         this.SetGlow(false);
+        this.SetMaterial(focus);
     }
 
     private void SetGlow(bool value)
     {
-        if (this.glowLight != null)
+        this.glowLight.SetActive(value);
+    }
+
+    private void SetMaterial(bool focus)
+    {
+        if (this.defaultMaterial != null && this.focusMaterial != null)
         {
-            this.glowLight.SetActive(value);
+            this.spriteRenderer.material = focus ? this.focusMaterial : this.defaultMaterial;
         }
     }
 

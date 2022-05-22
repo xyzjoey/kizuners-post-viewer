@@ -105,31 +105,31 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 5dd7fb1ff54143c47b4622e18488bb5d, type: 3}
   m_PackedSpriteNamesToIndex:
   - MiniIllust_spica 1
-  - "MiniIllust_\u307B\u3080\u3089"
-  - "MiniIllust_\u308F\u3089\u3073\u3082\u3061"
+  - MiniIllust_homura
+  - MiniIllust_warabimoti
   - MiniIllust_spica
-  - "MiniIllust_\u3048\u308B\u3068\u3089\u3044\u3068"
-  - "MiniIllust_\u7A76\u6975\u306E\u5929\u7F70 4"
+  - MiniIllust_erutoraito
+  - MiniIllust_kyuukyokunotenbatu 4
   - MiniIllust_JustPeasu
-  - "MiniIllust_\u304B\u3050\u3084"
-  - "MiniIllust_\u3042\u3044\u3089"
+  - MiniIllust_kaguya
+  - MiniIllust_aira
   - MiniIllust_argon
-  - "MiniIllust_\u30D2\u30EB\u30CD\u30EB"
+  - MiniIllust_hiruneru
   - MiniIllust_litegolyat
   - MiniIllust_Mikko Bryan Clear
-  - "MiniIllust_\u7A76\u6975\u306E\u5929\u7F70 2"
+  - MiniIllust_kyuukyokunotenbatu 2
   - MiniIllust_Kongmimi
-  - "MiniIllust_\u30D5\u30A9\u30EB\u30C6"
-  - "MiniIllust_\u7A76\u6975\u306E\u5929\u7F70"
+  - MiniIllust_forute
+  - MiniIllust_kyuukyokunotenbatu
   - MiniIllust_MOTO
-  - "MiniIllust_\u7A76\u6975\u306E\u5929\u7F70 5"
-  - "MiniIllust_\u30B7\u30E5\u30D3"
-  - "MiniIllust_\u3057\u3044\u305F\u3051"
+  - MiniIllust_kyuukyokunotenbatu 5
+  - MiniIllust_syubi
+  - MiniIllust_siitake
   - MiniIllust_Eris
-  - "MiniIllust_\u7A76\u6975\u306E\u5929\u7F70 3"
-  - "MiniIllust_\u7A76\u6975\u306E\u5929\u7F70 1"
-  - "MiniIllust_\u304F\u3058\u3089\u3061\u3083\u3093"
-  - "MiniIllust_\u304F\u3081\u306E"
+  - MiniIllust_kyuukyokunotenbatu 3
+  - MiniIllust_kyuukyokunotenbatu 1
+  - MiniIllust_kujiratyan
+  - MiniIllust_kumeno
   - MiniIllust_argon 1
   m_RenderDataMap: {}
   m_Tag: miniillusts

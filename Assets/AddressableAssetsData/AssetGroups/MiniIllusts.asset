@@ -17,12 +17,12 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: dff2b478450138141a29d28f32e61eca
   m_SerializeEntries:
-  - m_GUID: a962c8f5698c5e54ea4fc22431d972a9
-    m_Address: Assets/SceneReferences/MiniIllusts.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: c5d9bae06e6be934dae9a0853ded3c81
     m_Address: miniillusts
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a962c8f5698c5e54ea4fc22431d972a9
+    m_Address: Assets/SceneReferences/MiniIllusts.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0

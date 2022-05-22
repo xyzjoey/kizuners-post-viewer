@@ -27,6 +27,18 @@ SpriteAtlas:
       m_ResizeAlgorithm: 0
       m_TextureFormat: -1
       m_TextureCompression: 2
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    - serializedVersion: 3
+      m_BuildTarget: WebGL
+      m_MaxTextureSize: 4096
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 12
+      m_TextureCompression: 1
       m_CompressionQuality: 50
       m_CrunchedCompression: 0
       m_AllowsAlphaSplitting: 0
@@ -44,60 +56,69 @@ SpriteAtlas:
     secondaryTextureSettings: {}
     variantMultiplier: 1
     packables:
-    - {fileID: 2800000, guid: 5b6c2bae88b5a9a4a825ebffa44d51bf, type: 3}
-    - {fileID: 2800000, guid: e51686638b958e14681b984c08785592, type: 3}
-    - {fileID: 2800000, guid: 2427f2696ee356e4d817dcdb80d24a97, type: 3}
-    - {fileID: 2800000, guid: 3a65feacb80f40f40aaf494b43cd271e, type: 3}
-    - {fileID: 2800000, guid: 789d3ba8717335f4db4055509a0ac5ba, type: 3}
-    - {fileID: 2800000, guid: 064e5ded3f3999847bdd7ca780c868f9, type: 3}
-    - {fileID: 2800000, guid: 87588dfb9c43a5c4987df2a13b6a4551, type: 3}
-    - {fileID: 2800000, guid: 8d21ca831744c8b40ab4ce4b24afb85a, type: 3}
-    - {fileID: 2800000, guid: 2fc1764e03ee8ad428d34b2f2c35e645, type: 3}
-    - {fileID: 2800000, guid: e50e7f91331939b42811d265218fba27, type: 3}
-    - {fileID: 2800000, guid: 74348a4055d8dc4439d9935b69b29629, type: 3}
-    - {fileID: 2800000, guid: ffb74aadb156545498b9b25b28a9f35f, type: 3}
-    - {fileID: 2800000, guid: 45dabd5c429057e41a440ea3d8bae92b, type: 3}
-    - {fileID: 2800000, guid: b69ddfc8c000ef942a3affc90092cb13, type: 3}
-    - {fileID: 2800000, guid: 87cc3070c6fc6bb45894e8d2806cd74d, type: 3}
-    - {fileID: 2800000, guid: 8e71d916c481bf5448f491635f58287e, type: 3}
+    - {fileID: 2800000, guid: 4631b3cb3c223ef4c8762928123d9515, type: 3}
+    - {fileID: 2800000, guid: fe92709af2f9768419eaa8bd42c88d85, type: 3}
+    - {fileID: 2800000, guid: 479e958cedec07449b4919896297be7b, type: 3}
+    - {fileID: 2800000, guid: 6bde63de657595841b63bb4a0390473d, type: 3}
+    - {fileID: 2800000, guid: f13ea311f2fcc4c4a9a77e5f65e64d94, type: 3}
+    - {fileID: 2800000, guid: 77a7f11d987899445a12e2a5b43aea00, type: 3}
+    - {fileID: 2800000, guid: 9ea9ccf7eac0d1a4686b9501a35583df, type: 3}
+    - {fileID: 2800000, guid: a4ce07f4758e35f459b3c5a05c5ac67a, type: 3}
+    - {fileID: 2800000, guid: 8e69d55a92825e04d849346a0d1f758f, type: 3}
+    - {fileID: 2800000, guid: 95b9da45ae9ca0f46b84dcd9219ae465, type: 3}
+    - {fileID: 2800000, guid: 4f65e88409615334d826463b80a4ae31, type: 3}
+    - {fileID: 2800000, guid: 21160f3b205336348add630e89f89da9, type: 3}
+    - {fileID: 2800000, guid: 172093ac8d171fc4bbc85922583ef53f, type: 3}
+    - {fileID: 2800000, guid: 47fab17043db2db44bea87a4d8ac21c4, type: 3}
+    - {fileID: 2800000, guid: 34821a6337695184cb7e66aeebf8c6f7, type: 3}
+    - {fileID: 2800000, guid: e31a4c53430c71e41bd79d375ca66cd4, type: 3}
+    - {fileID: 2800000, guid: d3a01d75419c5be4e96307fcd8b73619, type: 3}
+    - {fileID: 2800000, guid: 6c4916a0da2681444812eec6e176c31b, type: 3}
+    - {fileID: 2800000, guid: f9817908c420e4847a75024aa6bb1c6e, type: 3}
     bindAsDefault: 0
     isAtlasV2: 0
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
-  - {fileID: 21300000, guid: 74348a4055d8dc4439d9935b69b29629, type: 3}
-  - {fileID: 21300000, guid: 87cc3070c6fc6bb45894e8d2806cd74d, type: 3}
-  - {fileID: 21300000, guid: e50e7f91331939b42811d265218fba27, type: 3}
-  - {fileID: 21300000, guid: e51686638b958e14681b984c08785592, type: 3}
-  - {fileID: 21300000, guid: 8d21ca831744c8b40ab4ce4b24afb85a, type: 3}
-  - {fileID: 21300000, guid: 8e71d916c481bf5448f491635f58287e, type: 3}
-  - {fileID: 21300000, guid: 789d3ba8717335f4db4055509a0ac5ba, type: 3}
-  - {fileID: 21300000, guid: b69ddfc8c000ef942a3affc90092cb13, type: 3}
-  - {fileID: 21300000, guid: 2427f2696ee356e4d817dcdb80d24a97, type: 3}
-  - {fileID: 21300000, guid: 87588dfb9c43a5c4987df2a13b6a4551, type: 3}
-  - {fileID: 21300000, guid: 45dabd5c429057e41a440ea3d8bae92b, type: 3}
-  - {fileID: 21300000, guid: 3a65feacb80f40f40aaf494b43cd271e, type: 3}
-  - {fileID: 21300000, guid: ffb74aadb156545498b9b25b28a9f35f, type: 3}
-  - {fileID: 21300000, guid: 064e5ded3f3999847bdd7ca780c868f9, type: 3}
-  - {fileID: 21300000, guid: 2fc1764e03ee8ad428d34b2f2c35e645, type: 3}
-  - {fileID: 21300000, guid: 5b6c2bae88b5a9a4a825ebffa44d51bf, type: 3}
+  - {fileID: 21300000, guid: 47fab17043db2db44bea87a4d8ac21c4, type: 3}
+  - {fileID: 21300000, guid: 6c4916a0da2681444812eec6e176c31b, type: 3}
+  - {fileID: 21300000, guid: f13ea311f2fcc4c4a9a77e5f65e64d94, type: 3}
+  - {fileID: 21300000, guid: e31a4c53430c71e41bd79d375ca66cd4, type: 3}
+  - {fileID: 21300000, guid: 34821a6337695184cb7e66aeebf8c6f7, type: 3}
+  - {fileID: 21300000, guid: 4f65e88409615334d826463b80a4ae31, type: 3}
+  - {fileID: 21300000, guid: a4ce07f4758e35f459b3c5a05c5ac67a, type: 3}
+  - {fileID: 21300000, guid: 95b9da45ae9ca0f46b84dcd9219ae465, type: 3}
+  - {fileID: 21300000, guid: d3a01d75419c5be4e96307fcd8b73619, type: 3}
+  - {fileID: 21300000, guid: 9ea9ccf7eac0d1a4686b9501a35583df, type: 3}
+  - {fileID: 21300000, guid: f9817908c420e4847a75024aa6bb1c6e, type: 3}
+  - {fileID: 21300000, guid: 8e69d55a92825e04d849346a0d1f758f, type: 3}
+  - {fileID: 21300000, guid: fe92709af2f9768419eaa8bd42c88d85, type: 3}
+  - {fileID: 21300000, guid: 21160f3b205336348add630e89f89da9, type: 3}
+  - {fileID: 21300000, guid: 4631b3cb3c223ef4c8762928123d9515, type: 3}
+  - {fileID: 21300000, guid: 479e958cedec07449b4919896297be7b, type: 3}
+  - {fileID: 21300000, guid: 172093ac8d171fc4bbc85922583ef53f, type: 3}
+  - {fileID: 21300000, guid: 77a7f11d987899445a12e2a5b43aea00, type: 3}
+  - {fileID: 21300000, guid: 6bde63de657595841b63bb4a0390473d, type: 3}
   m_PackedSpriteNamesToIndex:
-  - MainIllust_aichan_leftleg3
-  - MainIllust_aichan_rightarm_low2
-  - MainIllust_aichan_leftleg2
-  - MainIllust_aichan_body
-  - MainIllust_aichan_rightleg3
-  - MainIllust_aichan_rightarm_low3
-  - MainIllust_aichan_rightarm_up
-  - MainIllust_aichan_rightarm_low1
-  - MainIllust_aichan_hip
-  - MainIllust_aichan_rightleg2
-  - MainIllust_aichan_rightarm_hand
-  - MainIllust_aichan_leftarm
-  - MainIllust_aichan_pyoko
-  - MainIllust_aichan_rightleg1
-  - MainIllust_aichan_leftleg1
-  - MainIllust_aichan_head
+  - aichan_rightarm5
+  - aichan_rightleg3
+  - aichan_leftleg1
+  - aichan_rightleg1
+  - aichan_rightarm_hand
+  - aichan_rightarm2
+  - aichan_leftleg4
+  - aichan_rightarm1
+  - aichan_rightleg2
+  - aichan_leftleg3
+  - aichan_rightleg4
+  - aichan_pyoko
+  - aichan_head
+  - aichan_rightarm3
+  - aichan_body
+  - aichan_hip
+  - aichan_rightarm4
+  - aichan_leftleg2
+  - aichan_leftarm
   m_RenderDataMap: {}
   m_Tag: aichan
   m_IsVariant: 0

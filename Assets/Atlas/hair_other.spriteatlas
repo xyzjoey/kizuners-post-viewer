@@ -44,36 +44,30 @@ SpriteAtlas:
     secondaryTextureSettings: {}
     variantMultiplier: 1
     packables:
-    - {fileID: 2800000, guid: 40988079fbb65e9458002cc3535e0c58, type: 3}
-    - {fileID: 2800000, guid: 8a4d2a112b815cd49a25de19a803427a, type: 3}
-    - {fileID: 2800000, guid: 508109cee5ae94841aef140a08174cdd, type: 3}
-    - {fileID: 2800000, guid: 7356eccc01f4b3c468af79fd4f77cf77, type: 3}
-    - {fileID: 2800000, guid: 4e463d9106dc0e64cb471c5d8a035607, type: 3}
-    - {fileID: 2800000, guid: 7c0d50ffbc21fcc4193a9ebd49c2e7a4, type: 3}
-    - {fileID: 2800000, guid: f48ebf19f999f464685cf8c6c75263b0, type: 3}
-    - {fileID: 2800000, guid: d8e1ac5215215c149af9900e0284b21d, type: 3}
+    - {fileID: 2800000, guid: 2c28dbcc7e24aa048ad9b1cc34df2da7, type: 3}
+    - {fileID: 2800000, guid: b3d46541513483a40aa51c88225a04e3, type: 3}
+    - {fileID: 2800000, guid: 6eccddd984475ca4b90bd103fc5402a4, type: 3}
+    - {fileID: 2800000, guid: d4ed782052bf1fe488b8467af4e82604, type: 3}
+    - {fileID: 2800000, guid: ff197afcffe77c1438754d6950768d6c, type: 3}
+    - {fileID: 2800000, guid: de553c6da88c3e84fb8368ffbc1bad79, type: 3}
     bindAsDefault: 0
     isAtlasV2: 0
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
-  - {fileID: 21300000, guid: 8a4d2a112b815cd49a25de19a803427a, type: 3}
-  - {fileID: 21300000, guid: 4e463d9106dc0e64cb471c5d8a035607, type: 3}
-  - {fileID: 21300000, guid: d8e1ac5215215c149af9900e0284b21d, type: 3}
-  - {fileID: 21300000, guid: f48ebf19f999f464685cf8c6c75263b0, type: 3}
-  - {fileID: 21300000, guid: 40988079fbb65e9458002cc3535e0c58, type: 3}
-  - {fileID: 21300000, guid: 7356eccc01f4b3c468af79fd4f77cf77, type: 3}
-  - {fileID: 21300000, guid: 508109cee5ae94841aef140a08174cdd, type: 3}
-  - {fileID: 21300000, guid: 7c0d50ffbc21fcc4193a9ebd49c2e7a4, type: 3}
+  - {fileID: 21300000, guid: d4ed782052bf1fe488b8467af4e82604, type: 3}
+  - {fileID: 21300000, guid: b3d46541513483a40aa51c88225a04e3, type: 3}
+  - {fileID: 21300000, guid: 6eccddd984475ca4b90bd103fc5402a4, type: 3}
+  - {fileID: 21300000, guid: 2c28dbcc7e24aa048ad9b1cc34df2da7, type: 3}
+  - {fileID: 21300000, guid: ff197afcffe77c1438754d6950768d6c, type: 3}
+  - {fileID: 21300000, guid: de553c6da88c3e84fb8368ffbc1bad79, type: 3}
   m_PackedSpriteNamesToIndex:
-  - MainIllust_aichan_hair_small1
-  - MainIllust_effect_polygon1
-  - MainIllust_bg
-  - MainIllust_effect_polygon3
-  - MainIllust_aichan_hair
-  - MainIllust_effect_particle
-  - MainIllust_bg_line
-  - MainIllust_effect_polygon2
+  - aichan_hair_side1
+  - aichan_hair_back2
+  - aichan_hair_back3
+  - aichan_hair_back1
+  - aichan_hair_side2
+  - aichan_hair_side3
   m_RenderDataMap: {}
   m_Tag: hair_other
   m_IsVariant: 0

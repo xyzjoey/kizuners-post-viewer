@@ -5,46 +5,42 @@ using UnityEngine;
 public class FadeSprite : MonoBehaviour
 {
     public float delay = 0f;
-    public float startAlpha = 0f;
-    public float targetAlpha = 1f;
+    public float startBlend = 0f;
+    public float targetBlend = 1f;
     public float fadeMagnitude = 0.1f;
 
     private SpriteRenderer spriteRenderer;
+    private Material material;
 
     private void Awake()
     {
         this.spriteRenderer = this.GetComponent<SpriteRenderer>();
+        this.material = this.spriteRenderer.material;
     }
 
-    private void Start()
+    private void OnEnable()
     {
-        this.SetAlpha(this.startAlpha);
+        this.SetBlend(this.startBlend);
         this.StartCoroutine(this.Fade());
     }
 
-    IEnumerator Fade()
+    private IEnumerator Fade()
     {
         yield return new WaitForSeconds(this.delay);
 
-        float alpha = this.spriteRenderer.color.a;
-        float increment = (this.targetAlpha >= alpha ? 1f : -1f) * this.fadeMagnitude;
+        float blend = this.material.GetFloat("_OverlayOpacity");
 
-        while (Mathf.Abs(this.targetAlpha - alpha) > Mathf.Epsilon)
+        while (Mathf.Abs(this.targetBlend - blend) > Mathf.Epsilon)
         {
-            alpha += increment;
-            this.SetAlpha(alpha);
+            blend = Mathf.MoveTowards(blend, this.targetBlend, this.fadeMagnitude);
+            this.SetBlend(blend);
 
             yield return new WaitForSeconds(0.05f);
         }
     }
 
-    private void SetAlpha(float alpha)
+    private void SetBlend(float blend)
     {
-        this.spriteRenderer.color = new Color(
-            this.spriteRenderer.color.r,
-            this.spriteRenderer.color.g,
-            this.spriteRenderer.color.b,
-            alpha
-        );
+        this.material.SetFloat("_OverlayOpacity", blend);
     }
 }
